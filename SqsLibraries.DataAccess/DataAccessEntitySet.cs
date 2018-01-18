@@ -10,7 +10,7 @@ using System.Data.Common;
 
 namespace SqsLibraries.DataAccess
 {
-    public class DataAccessEntitySet<TEntity, T, C> where TEntity : class where T : DbParameter where C: DbConnection
+    public class DataAccessEntitySet<TEntity, T, C> where TEntity : class where T : DbParameter where C : DbConnection
     {
         private CommandTypeManager<T, C> commandTypeManager;
 
@@ -35,7 +35,17 @@ namespace SqsLibraries.DataAccess
 
         public virtual TEntity Find(string commandText, Func<DbDataReader, TEntity> entityMapper, params T[] parameters)
         {
-            return entityMapper(CommandTypeManager.ExecuteReader(commandText, parameters));
+            TEntity entity = null;
+
+            using (var reader = CommandTypeManager.ExecuteReader(commandText, parameters))
+            {
+                while (reader.Read())
+                {
+                    entity = entityMapper(reader);
+                }
+            }
+
+            return entity;
         }
 
         public virtual List<TEntity> GetEntities(string commandText, Func<DbDataReader, TEntity> entityMapper, params T[] parameters)
