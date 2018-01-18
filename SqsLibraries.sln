@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.27004.2008
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqsLibraries.Common", "SqsLibraries.Common\SqsLibraries.Common.csproj", "{148162AB-EA67-4F63-BA16-1D9AC9724CE9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqsLibraries.DataAccess", "SqsLibraries.DataAccess\SqsLibraries.DataAccess.csproj", "{99508E2C-78A0-4970-A042-DD95CCEF3859}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqsLibraries.PostgresLibrary", "SqsLibraries.PostgresLibrary\SqsLibraries.PostgresLibrary.csproj", "{1CDF1BBF-F59A-4712-8288-236C8F4D6147}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{148162AB-EA67-4F63-BA16-1D9AC9724CE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{148162AB-EA67-4F63-BA16-1D9AC9724CE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{148162AB-EA67-4F63-BA16-1D9AC9724CE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99508E2C-78A0-4970-A042-DD95CCEF3859}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99508E2C-78A0-4970-A042-DD95CCEF3859}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99508E2C-78A0-4970-A042-DD95CCEF3859}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99508E2C-78A0-4970-A042-DD95CCEF3859}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CDF1BBF-F59A-4712-8288-236C8F4D6147}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CDF1BBF-F59A-4712-8288-236C8F4D6147}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CDF1BBF-F59A-4712-8288-236C8F4D6147}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CDF1BBF-F59A-4712-8288-236C8F4D6147}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
