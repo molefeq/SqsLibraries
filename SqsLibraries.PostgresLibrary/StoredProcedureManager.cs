@@ -18,8 +18,6 @@ namespace SqsLibraries.PostgresLibrary
 {
     public class StoredProcedureManager : CommandTypeManager<NpgsqlParameter, NpgsqlConnection>
     {
-        internal NpgsqlConnection _PgsqlConnection;
-
         public StoredProcedureManager(NpgsqlConnection pgsqlConnection) : base(pgsqlConnection) { }
 
         #region Public Methods
@@ -30,7 +28,7 @@ namespace SqsLibraries.PostgresLibrary
             {
                 Initialise(commandText);
 
-                using (NpgsqlCommand sqlCommand = new NpgsqlCommand(commandText, _PgsqlConnection) { CommandType = CommandType.StoredProcedure })
+                using (NpgsqlCommand sqlCommand = new NpgsqlCommand(commandText, Connection) { CommandType = CommandType.StoredProcedure })
                 {
                     SetSqlCommandParameters(sqlCommand, false, sqlParameters);
                     await sqlCommand.ExecuteNonQueryAsync();
@@ -48,7 +46,7 @@ namespace SqsLibraries.PostgresLibrary
             {
                 Initialise(commandText);
 
-                using (NpgsqlCommand sqlCommand = new NpgsqlCommand(commandText, _PgsqlConnection) { CommandType = CommandType.StoredProcedure })
+                using (NpgsqlCommand sqlCommand = new NpgsqlCommand(commandText, Connection) { CommandType = CommandType.StoredProcedure })
                 {
                     SetSqlCommandParameters(sqlCommand, false, sqlParameters);
                     sqlCommand.ExecuteNonQuery();
@@ -68,7 +66,7 @@ namespace SqsLibraries.PostgresLibrary
 
                 Initialise(commandText);
 
-                using (NpgsqlCommand sqlCommand = new NpgsqlCommand(commandText, _PgsqlConnection) { CommandType = CommandType.StoredProcedure })
+                using (NpgsqlCommand sqlCommand = new NpgsqlCommand(commandText, Connection) { CommandType = CommandType.StoredProcedure })
                 {
                     SetSqlCommandParameters(sqlCommand, false, sqlParameters);
                     NpgsqlDataAdapter sqlDataAdapter = new NpgsqlDataAdapter(sqlCommand);
@@ -90,7 +88,7 @@ namespace SqsLibraries.PostgresLibrary
             {
                 Initialise(commandText);
 
-                using (NpgsqlCommand sqlCommand = new NpgsqlCommand(commandText, _PgsqlConnection) { CommandType = CommandType.StoredProcedure })
+                using (NpgsqlCommand sqlCommand = new NpgsqlCommand(commandText, Connection) { CommandType = CommandType.StoredProcedure })
                 {
                     SetSqlCommandParameters(sqlCommand, false, sqlParameters);
                     return sqlCommand.ExecuteReader();
@@ -108,7 +106,7 @@ namespace SqsLibraries.PostgresLibrary
             {
                 Initialise(commandText);
 
-                using (NpgsqlCommand sqlCommand = new NpgsqlCommand(commandText, _PgsqlConnection) { CommandType = CommandType.StoredProcedure })
+                using (NpgsqlCommand sqlCommand = new NpgsqlCommand(commandText, Connection) { CommandType = CommandType.StoredProcedure })
                 {
                     SetSqlCommandParameters(sqlCommand, false, sqlParameters);
 
@@ -129,7 +127,7 @@ namespace SqsLibraries.PostgresLibrary
 
                 Initialise(commandText);
 
-                using (NpgsqlCommand sqlCommand = new NpgsqlCommand(commandText, _PgsqlConnection) { CommandType = CommandType.StoredProcedure })
+                using (NpgsqlCommand sqlCommand = new NpgsqlCommand(commandText, Connection) { CommandType = CommandType.StoredProcedure })
                 {
                     SetSqlCommandParameters(sqlCommand, true, sqlParameters);
 
@@ -154,7 +152,7 @@ namespace SqsLibraries.PostgresLibrary
 
                 Initialise(commandText);
 
-                using (NpgsqlCommand sqlCommand = new NpgsqlCommand(commandText, _PgsqlConnection) { CommandType = CommandType.StoredProcedure })
+                using (NpgsqlCommand sqlCommand = new NpgsqlCommand(commandText, Connection) { CommandType = CommandType.StoredProcedure })
                 {
                     SetSqlCommandParameters(sqlCommand, true, sqlParameters);
 
@@ -182,7 +180,7 @@ namespace SqsLibraries.PostgresLibrary
                 throw new StoredProcedureException(string.Format("{0} cannot be null or empty.", "Store Procedure Name"));
             }
 
-            if (_PgsqlConnection.State != ConnectionState.Open)
+            if (Connection.State != ConnectionState.Open)
             {
                 throw new StoredProcedureException("Database connection is not opened");
             }

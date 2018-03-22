@@ -20,5 +20,23 @@ namespace SqsLibraries.Common.Utilities.ResponseObjects
 
         public string FieldName { get; set; }
         public string Message { get; set; }
+
+        public static ResponseMessage ToError(string message)
+        {
+            return new ResponseMessage
+            {
+                Message = message,
+                MessageType = MessageType.ERROR
+            };
+        }
+        public static ResponseMessage ToError(string fieldName, string message)
+        {
+            return new ResponseMessage
+            {
+                FieldName = fieldName,
+                Message = message,
+                MessageType = MessageType.ERROR
+            };
+        }
     }
 }

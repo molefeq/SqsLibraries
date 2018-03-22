@@ -11,5 +11,29 @@ namespace SqsLibraries.Common.Utilities.ResponseObjects
         {
             Messages = new List<ResponseMessage>();
         }
+
+        public static Response<T> Success(T item)
+        {
+            return new Response<T>
+            {
+                Item = item
+            };
+        }
+
+        public static Response<T> Fail(ResponseMessage message)
+        {
+            return new Response<T>
+            {
+                Messages = new List<ResponseMessage> { message }
+            };
+        }
+
+        public static Response<T> Fail(List<ResponseMessage> messages)
+        {
+            return new Response<T>
+            {
+                Messages = messages
+            };
+        }
     }
 }
