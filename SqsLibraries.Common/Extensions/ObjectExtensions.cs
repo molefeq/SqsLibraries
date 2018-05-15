@@ -34,6 +34,27 @@ namespace SqsLibraries.Common.Extensions
             return Convert.ToInt32(objectValue.ToString());
         }
 
+
+        public static long ToLong(this object objectValue)
+        {
+            if (objectValue == null || string.IsNullOrEmpty(objectValue.ToString()))
+            {
+                return 0;
+            }
+
+            return Convert.ToInt64(objectValue.ToString());
+        }
+
+        public static long? ToNullableLong(this object objectValue)
+        {
+            if (objectValue == null || string.IsNullOrEmpty(objectValue.ToString()))
+            {
+                return default(long?);
+            }
+
+            return Convert.ToInt64(objectValue.ToString());
+        }
+
         public static Guid ToGuid(this object objectValue)
         {
             if (objectValue == null || string.IsNullOrEmpty(objectValue.ToString()))
