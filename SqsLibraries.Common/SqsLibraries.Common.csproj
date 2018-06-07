@@ -1,7 +1,15 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <PackageId>SqsLibraries.Common.RC.1.0.0</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Qinisela Molefe</Authors>
+    <Company>SQS Designs</Company>
+    <Description>This library contains all the common data objects, extension and function that sqs design uses across all its developmnet applications.</Description>
+    <RepositoryUrl>https://github.com/molefeq/SqsLibraries.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <IncludeBuildOutput>true</IncludeBuildOutput>
   </PropertyGroup>
 
 </Project>
